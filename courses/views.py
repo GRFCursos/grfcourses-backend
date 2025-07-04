@@ -74,7 +74,7 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
             "watched_lessons": watched_lessons,
             "total_watched_lessons": total_watched_lessons,
             "total_time": total_time,
-            "progress": round((total_watched_lessons / total_lessons) * 100, 2)
+            "progress": round((total_watched_lessons / total_lessons) * 100, 2) if total_watched_lessons > 0 and total_lessons > 0 else 0
         }
 
     @decorators.action(detail=True, methods=['get'])
